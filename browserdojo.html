@@ -1,0 +1,57 @@
+<html><body>
+<script>
+	var loc = (window.location+"");
+	loc = loc.replace(/[a-z0-9]+[\.\#].*$/,'')+'/js'
+	dojoConfig = {
+		async:true,
+		parseOnLoad: false,
+		cacheBust: false,
+		baseUrl: '/lib',
+		has: {
+			"dojo-firebug": true,
+			"dojo-debug-messages": true
+		},
+		packages: [
+			{name:'dojo',location:'vendor/dojo-release-1.8.3-src/dojo'},
+			{name:'dijit',location:'vendor/dojo-release-1.8.3-src/dijit'},
+			{name:'dojox',location:'vendor/dojo-release-1.8.3-src/dojox'},
+			{name:'util',location:'vendor/dojo-release-1.8.3-src/util'}
+		]
+	};
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"></script>
+<script>
+	require(['lib/me_map_reduce.js'],function(me_map_reduce) {
+		
+		var possessions = {
+		    'car': ['Charles', 'Susan'],
+		    'computer': ['Matt', 'Charles','Rei'],
+		    'android': ['Matt', 'Susan', 'Rei','Cheryl'],
+		    'mountain_bike': ['Matt' ,'Cheryl'],
+		    'audible': ['Matt','Susan'],
+		    'piano': ['Rei']
+		};
+
+		var result = me_map_reduce(
+		    possessions,
+		    function(key,data,emit,extraData) {
+		        var i = 0;
+		        for (i=0;i<data.length;i++) {
+		            emit(data[i],key);
+		        }
+		    },
+		    function(emittedK,emittedValues,extraData) {
+		        emittedValues.push(extraData);
+		        return emittedValues;
+		    },
+		    'frog'
+		);
+		
+		console.log(result);
+		
+	});
+		
+	console.log(typeof me_map_reduce);
+	console.log(typeof window.me_map_reduce);
+</script>
+</body></html>

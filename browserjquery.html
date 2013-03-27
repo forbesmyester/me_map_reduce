@@ -1,0 +1,38 @@
+<html><body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="lib/me_map_reduce.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    var possessions = {
+        'car': ['Charles', 'Susan'],
+        'computer': ['Matt', 'Charles','Rei'],
+        'android': ['Matt', 'Susan', 'Rei','Cheryl'],
+        'mountain_bike': ['Matt' ,'Cheryl'],
+        'audible': ['Matt','Susan'],
+        'piano': ['Rei']
+    };
+
+    var result = $.me_map_reduce(
+        possessions,
+        function(key,data,emit,extraData) {
+            var i = 0;
+            for (i=0;i<data.length;i++) {
+                emit(data[i],key);
+            }
+        },
+        function(emittedK,emittedValues,extraData) {
+            emittedValues.push(extraData);
+            return emittedValues;
+        },
+        'frog'
+    );
+    
+    console.log(result);
+});
+
+console.log(typeof me_map_reduce);
+console.log(typeof window.me_map_reduce);
+
+</script>
+</body></html>

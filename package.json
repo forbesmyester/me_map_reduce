@@ -1,0 +1,21 @@
+{
+    "name": "me_map_reduce",
+    "version": "0.1.0",
+    "description": "MongoDB style Map Reduce functionality (with emit)",
+    "author": "Matthew Forrester <matt@mediaequals.com>",
+    "dependencies": {
+        "node.extend": "1.0.x"
+    },
+    "devDependencies": {
+        "expect.js": "0.2.x",
+        "mocha": "1.8.x",
+        "jshint": "0.9.x",
+        "docker": "0.2.x"
+    },
+    "engines": {
+        "node": "0.9.x"
+    },
+    "repository": {
+        "url": "fozz@markdown:/exports/repositories/me_map_reduce"
+    }
+}
