@@ -4,7 +4,6 @@
     "description": "MongoDB style Map Reduce functionality (with emit)",
     "author": "Matthew Forrester <matt@mediaequals.com>",
     "dependencies": {
-        "node.extend": "1.0.x"
     },
     "devDependencies": {
         "expect.js": "0.2.x",
